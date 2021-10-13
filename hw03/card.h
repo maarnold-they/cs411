@@ -35,7 +35,9 @@ public:
   bool operator<=(const Card& other) const;
 
   int getRank();
+  const int getRank() const;
   int getSuit();
+  const int getSuit() const;
 
 //data members
 private:

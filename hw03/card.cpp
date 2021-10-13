@@ -10,22 +10,31 @@
 
 bool Card::operator==(const Card& other) const
 {
-  return false;
+  return _rank==other.getRank() && _suit==other.getSuit();
 }
 bool Card::operator<(const Card& other) const
 {
-  return false;
+  return _rank<other.getRank();
 }
 bool Card::operator<=(const Card& other) const
 {
-  return false;
+  return *this == other || *this < other;
 }
 
 int Card::getRank()
 {
-  return 0;
+  return _rank;
 }
 int Card::getSuit()
 {
-  return 0;
+  return _suit;
+}
+
+const int Card::getRank() const
+{
+  return this->getRank();
+}
+const int Card::getSuit() const
+{
+  return this->getSuit();
 }
