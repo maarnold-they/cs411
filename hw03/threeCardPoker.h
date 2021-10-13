@@ -12,9 +12,12 @@
 #include <string>
 #include <map>
 #include <vector>
+#include <utility>
 
 void threeCardPoker(std::map<std::string,int> &hands);
 
 const int computeTotal(const std::vector<int> &quantities);
+
+std::vector<std::pair<int,int>> makeDeck();
 
 #endif
