@@ -13,11 +13,25 @@
 #include <map>
 #include <vector>
 #include <utility>
+#include <tuple>
+#include <algorithm>
+
+struct Card
+{
+  int suit;
+  int rank;
+
+  Card(int s, int r) : suit(s), rank(r) {}
+
+};
 
 void threeCardPoker(std::map<std::string,int> &hands);
 
 const int computeTotal(const std::vector<int> &quantities);
 
-std::vector<std::pair<int,int>> makeDeck();
+std::vector<Card> makeDeck();
+
+void evaluateHand(std::map<std::string,int> &hands,
+  const std::vector<Card>& hand);
 
 #endif

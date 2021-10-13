@@ -13,12 +13,9 @@
 
 int main(int argc, char const *argv[]) {
   std::map<std::string,int> hands;
-  threeCardPoker(hands);
-  int sum=0;
   for(auto hand: hands)
   {
-    sum+=hand.second;
+    std::cout << hand.first << " : " << hand.second << std::endl;
   }
-  std::cout << "Hand\tDescription\tFreq\tProb\tPayout\tReturn";
   return 0;
 }
