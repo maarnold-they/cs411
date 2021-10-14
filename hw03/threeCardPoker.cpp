@@ -10,10 +10,18 @@
 
 std::vector<Card> makeDeck()
 {
-  return {Card(0,0)};
+  std::vector<Card> deck;
+  for(int suit = 1; suit <=4; ++suit)
+  {
+    for(int rank = 1; rank<=13; ++rank)
+    {
+      deck.push_back({suit, rank});
+    }
+  }
+  return deck;
 }
 
 void computeHand(std::map<std::string, int> quants, std::vector<Card> hand)
 {
-  
+
 }
