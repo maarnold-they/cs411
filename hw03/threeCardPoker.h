@@ -14,9 +14,10 @@
 #include <vector>
 #include <map>
 #include <string>
+#include <algorithm>
 
 std::vector<Card> makeDeck();
 
-void computeHand(std::map<std::string, int> quants, std::vector<Card> hand);
+void computeHand(std::map<std::string, int>& quants, std::vector<Card>& hand);
 
 #endif
