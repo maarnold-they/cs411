@@ -21,55 +21,50 @@ std::vector<Card> makeDeck()
   return deck;
 }
 #include <iostream>
-void computeHand(std::map<std::string, int>& quants, std::vector<Card>& hand)
+std::pair<std::string, int> computeHand(std::map<std::string, int>& payouts, Hand hand)
 {
   for(int j=0; j<2; ++j)
   {
     for(int i=0; i<2; ++i)
     {
-      if(hand[i].getRank()<hand[i+1].getRank())
+      if(hand.cards[i].getRank()<hand.cards[i+1].getRank())
       {
-        Card temp = hand[i];
-        hand[i] = hand[i+1];
-        hand[i+1] = temp;
+        Card temp = hand.cards[i];
+        hand.cards[i] = hand.cards[i+1];
+        hand.cards[i+1] = temp;
       }
     }
   }
-  if( hand[0].getSuit()==hand[1].getSuit() &&
-      hand[1].getSuit()==hand[2].getSuit() &&
-      (hand[0].getRank()==hand[2].getRank()+2 ||
-      (hand[1].getRank()==12 && hand[2].getRank()==1)))
+  if( hand.cards[0].getSuit()==hand.cards[1].getSuit() &&
+      hand.cards[1].getSuit()==hand.cards[2].getSuit() &&
+      (hand.cards[0].getRank()==hand.cards[2].getRank()+2 ||
+      (hand.cards[1].getRank()==12 && hand.cards[2].getRank()==1)))
   {
-    ++quants["Straight Flush"];
-    return;
+    return{"Straight Flush", payouts["Straight Flush"]};
   }
-  if( hand[0].getRank()==hand[1].getRank() &&
-      hand[1].getRank()==hand[2].getRank())
+  if( hand.cards[0].getRank()==hand.cards[1].getRank() &&
+      hand.cards[1].getRank()==hand.cards[2].getRank())
   {
-    ++quants["Three of a Kind"];
-    return;
+    return{"Three of a Kind", payouts["Three of a Kind"]};
   }
-  if( (hand[0].getRank()==hand[1].getRank()+1 &&
-      hand[0].getRank()==hand[2].getRank()+2) ||
-      (hand[0].getRank()==13 &&
-      hand[1].getRank()==12 &&
-      hand[2].getRank()==1))
+  if( (hand.cards[0].getRank()==hand.cards[1].getRank()+1 &&
+      hand.cards[0].getRank()==hand.cards[2].getRank()+2) ||
+      (hand.cards[0].getRank()==13 &&
+      hand.cards[1].getRank()==12 &&
+      hand.cards[2].getRank()==1))
   {
-    ++quants["Straight"];
-    return;
+    return{"Straight", payouts["Straight"]};
   }
-  if( hand[0].getSuit()==hand[1].getSuit() &&
-      hand[1].getSuit()==hand[2].getSuit())
+  if( hand.cards[0].getSuit()==hand.cards[1].getSuit() &&
+      hand.cards[1].getSuit()==hand.cards[2].getSuit())
   {
-    ++quants["Flush\t"];
-    return;
+    return{"Flush\t", payouts["Flush\t"]};
   }
-  if( hand[0].getRank()==hand[1].getRank() ||
-      hand[1].getRank()==hand[2].getRank() ||
-      hand[2].getRank()==hand[0].getRank())
+  if( hand.cards[0].getRank()==hand.cards[1].getRank() ||
+      hand.cards[1].getRank()==hand.cards[2].getRank() ||
+      hand.cards[2].getRank()==hand.cards[0].getRank())
   {
-    ++quants["Pair\t"];
-    return;
+    return{"Pair\t", payouts["Pair\t"]};
   }
-  ++quants["High Card"];
+  return{"High Card", payouts["High Card"]};
 }

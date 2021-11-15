@@ -18,6 +18,10 @@
 
 std::vector<Card> makeDeck();
 
-void computeHand(std::map<std::string, int>& quants, std::vector<Card>& hand);
+struct Hand {
+  std::vector<Card> cards;
+};
+
+std::pair<std::string, int> computeHand(std::map<std::string, int>& payouts, Hand hand);
 
 #endif
