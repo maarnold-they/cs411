@@ -11,7 +11,7 @@
 
 #include <iostream>
 #include <map>
-//Sum == 132600
+
 int main(int argc, char** argv)
 {
   auto deck{makeDeck()};
@@ -33,10 +33,10 @@ int main(int argc, char** argv)
   }
 
   std::map<std::string, int> payouts;
-  payouts["Straight Flush"]=2000;
-  payouts["Three of a Kind"]=250;
-  payouts["Straight"]=30;
-  payouts["Flush\t"]=15;
+  payouts["Straight Flush"]=330;
+  payouts["Three of a Kind"]=100;
+  payouts["Straight"]=20;
+  payouts["Flush\t"]=10;
   payouts["Pair\t"]=2;
   payouts["High Card"]=0;
 
